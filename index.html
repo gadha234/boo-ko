@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Boo-Ko</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add the hover zoom CSS here if not in style.css */
+        .image-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .image-container img {
+            transition: transform 0.5s ease, transform-origin 0.5s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body class="theme-light">
+    <nav class="shadow-lg bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold">Boo-Ko</a>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#order" class="nav-link">Order</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button id="theme-toggle" class="text-gray-800 focus:outline-none">
+                    <i id="theme-icon" class='bx bx-moon text-3xl icon-color'></i>
+                </button>
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none md:hidden">
+                    <div id="menu-icon" class="w-6 h-6 flex flex-col justify-between items-center icon-color">
+                        <span class="line1 block w-full h-0.5 bg-current"></span>
+                        <span class="line2 block w-full h-0.5 bg-current"></span>
+                        <span class="line3 block w-full h-0.5 bg-current"></span>
+                    </div>
+                </button>                
+            </div>
+        </div>
+    
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <a href="#" class="block p-2">Home</a>
+            <a href="#order" class="block p-2">Order</a>
+            <a href="#contact" class="block p-2">Contact</a>
+        </div>
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col md:flex-row items-center">
+        <div class="flex-1 md:mr-8 image-container relative" id="image-container">
+            <button id="prev-btn" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-700 px-3 py-1 rounded-full focus:outline-none">
+                <i class="bx bx-left-arrow-alt"></i>
+            </button>
+            <img src="https://optilux.com.bd/wp-content/uploads/2024/05/999-taka.jpg" alt="Home Image" class="h-400 w-full md:w-600 object-cover rounded-lg" id="zoom-image">
+            <button id="next-btn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-700 px-3 py-1 rounded-full focus:outline-none">
+                <i class="bx bx-right-arrow-alt"></i>
+            </button>
+        </div>
+        <div class="flex-1 mt-4 md:mt-0 md:ml-8">
+            <h2 class="text-3xl font-bold mb-4">Welcome to Boo-Ko!</h2>
+            <p class="text-lg mb-4">Discover our amazing products and services.</p>
+            <div class="flex items-center mb-4">
+                <button id="decrease-btn" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-l-md focus:outline-none">
+                    <i class="bx bx-minus"></i>
+                </button>
+                <span id="quantity-display" class="bg-gray-200 text-gray-700 px-3 py-1">1</span>
+                <button id="increase-btn" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-r-md focus:outline-none">
+                    <i class="bx bx-plus"></i>
+                </button>
+            </div>
+            <p class="text-lg mb-4">Total Amount: <span id="total-amount">999 TK</span></p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none">Add to Cart</button>
+        </div>
+    </section>
+    
+    <section id="order" class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+        <h2 class="text-3xl font-bold mb-4">Place Your Order</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <label for="product" class="block text-lg font-medium mb-2">Product</label>
+                <select id="product" class="w-full border border-gray-300 p-2 rounded-md">
+                    <option value="999">Product 1 - 999 TK</option>
+                    <option value="50">Product 2 - 50 TK</option>
+                    <option value="60">Product 3 - 60 TK</option>
+                </select>
+            </div>
+            <div class="flex items-center">
+                <label for="quantity" class="block text-lg font-medium mb-2 mr-4">Quantity</label>
+                <div class="flex items-center border border-gray-300 rounded-md overflow-hidden">
+                    <button class="decrease-btn px-3 py-1 bg-gray-200 text-gray-700 focus:outline-none">
+                        <i class="bx bx-minus"></i>
+                    </button>
+                    <span id="quantity-display" class="quantity-display px-3 py-1 bg-gray-100 text-gray-700">1</span>
+                    <button class="increase-btn px-3 py-1 bg-gray-200 text-gray-700 focus:outline-none">
+                        <i class="bx bx-plus"></i>
+                    </button>
+                </div>
+            </div>            
+        </div>
+        <div class="flex justify-between items-center mt-4">
+            <div>
+                <p class="text-lg font-medium mb-2">Total Price:</p>
+                <p id="total-price" class="text-2xl font-bold">999 TK</p>
+            </div>
+        </div>
+        <div class="mt-8">
+            <h3 class="text-xl font-bold mb-4">Delivery Site:</h3>
+            <div class="flex items-center mb-4">
+                <input type="radio" id="delivery-inside-dhaka" name="delivery-site" class="mr-2" data-price="50">
+                <label for="delivery-inside-dhaka" class="text-lg">Inside Dhaka (50 TK)</label>
+            </div>
+            <div class="flex items-center mb-4">
+                <input type="radio" id="delivery-outside-dhaka" name="delivery-site" class="mr-2" data-price="70">
+                <label for="delivery-outside-dhaka" class="text-lg">Outside Dhaka (70 TK)</label>
+            </div>
+            <div id="inside-dhaka-fields" class="hidden">
+                <label for="name" class="block text-lg font-medium mb-2">Name</label>
+                <input type="text" id="name" name="name" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="mobile" class="block text-lg font-medium mb-2">Mobile Number</label>
+                <input type="text" id="mobile" name="mobile" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="email" class="block text-lg font-medium mb-2">Email (Optional)</label>
+                <input type="email" id="email" name="email" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="address" class="block text-lg font-medium mb-2">Enter Address</label>
+                <textarea id="address" name="address" class="w-full border border-gray-300 p-2 rounded-md mb-4"></textarea>
+            </div>
+            <div id="outside-dhaka-fields" class="hidden">
+                <label for="name-outside" class="block text-lg font-medium mb-2">Name</label>
+                <input type="text" id="name-outside" name="name-outside" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="mobile-outside" class="block text-lg font-medium mb-2">Mobile Number</label>
+                <input type="text" id="mobile-outside" name="mobile-outside" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="email-outside" class="block text-lg font-medium mb-2">Email (Optional)</label>
+                <input type="email" id="email-outside" name="email-outside" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="division" class="block text-lg font-medium mb-2">Division</label>
+                <input type="text" id="division" name="division" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="district" class="block text-lg font-medium mb-2">District</label>
+                <input type="text" id="district" name="district" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="upazila" class="block text-lg font-medium mb-2">Upazila</label>
+                <input type="text" id="upazila" name="upazila" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+    
+                <label for="postcode" class="block text-lg font-medium mb-2">Post Code</label>
+                <input type="text" id="postcode" name="postcode" class="w-full border border-gray-300 p-2 rounded-md mb-4">
+            </div>
+        </div>
+        <div class="mt-8 md:ml-auto md:w-1/2">
+            <h3 class="text-xl font-bold mb-4">Payment Method:</h3>
+            <div class="flex items-center mb-4">
+                <input type="radio" id="payment-cash" name="payment-method" class="mr-2">
+                <label for="payment-cash" class="text-lg">Cash on Delivery</label>
+            </div>
+            <div class="flex items-center mb-4">
+                <input type="radio" id="payment-online" name="payment-method" class="mr-2">
+                <label for="payment-online" class="text-lg">Online Payment</label>
+                <div id="online-payment-options" class="ml-4 hidden md:block">
+                    <div class="mb-2">
+                        <label class="block text-lg font-medium mb-2">Choose Payment Method:</label>
+                        <ul class="list-disc list-inside">
+                            <li>Bkash - 01836767943</li>
+                            <li>Nagad - 01745828596</li>
+                            <li>Rocket - 01735098746</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <label for="transaction-id" class="block text-lg font-medium mb-2">Transaction ID:</label>
+                        <input type="text" id="transaction-id" name="transaction-id" class="w-full border border-gray-300 p-2 rounded-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="confirm-order-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none mt-4 md:mt-0">Confirm Order</button>
+    </section>     
+    
+    <section id="contact" class="max-w-7xl mx-auto px-4 py-8 md:py-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+        <p class="text-lg mb-8">Feel free to reach out to us for any inquiries or assistance.</p>
+        <p class="text-lg mb-4">Email: info@boo-ko.com</p>
+        <p class="text-lg mb-4">Phone: +880 1234 567890</p>
+        <p class="text-lg">Address: 1234, Dhaka, Bangladesh</p>
+    </section>
+    
+    <footer class="py-6 shadow-lg text-center">
+        <p>&copy; 2024 Boo-Ko. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>        
+</body>
+</html>

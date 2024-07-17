@@ -1,0 +1,198 @@
+/* Light and Dark Theme Variables */
+.theme-light {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --menu-bg: #ffffff;
+    --menu-text: #000000;
+    --icon-color: #4a5568; /* Default icon color in light mode */
+}
+
+.theme-dark {
+    --bg-color: #2d3748;
+    --text-color: #ffffff;
+    --menu-bg: #2d3748;
+    --menu-text: #ffffff;
+    --icon-color: #cbd5e0; /* Default icon color in dark mode */
+}
+
+/* Custom scrollbar for WebKit browsers (like Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Thumb color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Hover color */
+}
+
+/* Light Theme Variables */
+:root {
+    --bg-color-light: #ffffff;
+    --text-color-light: #000000;
+    --menu-bg-light: #ffffff;
+    --menu-text-light: #000000;
+    --input-bg-light: #ffffff;
+    --input-text-light: #000000;
+    --select-bg-light: #ffffff;
+    --select-text-light: #000000;
+}
+
+/* Dark Theme Variables */
+:root {
+    --bg-color-dark: #2d3748;
+    --text-color-dark: #ffffff;
+    --menu-bg-dark: #2d3748;
+    --menu-text-dark: #ffffff;
+    --input-bg-dark: #2d3748;
+    --input-text-dark: #ffffff;
+    --select-bg-dark: #2d3748;
+    --select-text-dark: #ffffff;
+}
+
+/* Apply theme variables */
+body.theme-light {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+body.theme-dark {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+nav {
+    background-color: var(--menu-bg-light);
+    color: var(--menu-text-light);
+}
+
+input[type="text"], input[type="email"] {
+    background-color: var(--input-bg-light);
+    color: var(--input-text-light);
+    border: 1px solid var(--menu-text-light);
+}
+
+select {
+    background-color: var(--select-bg-light);
+    color: var(--select-text-light);
+    border: 1px solid var(--menu-text-light);
+    padding: 0.5rem;
+}
+
+body.theme-dark nav {
+    background-color: var(--menu-bg-dark);
+    color: var(--menu-text-dark);
+}
+
+body.theme-dark input[type="text"],
+body.theme-dark input[type="email"],
+body.theme-dark select,
+body.theme-dark textarea {
+    background-color: var(--input-bg-dark);
+    color: var(--input-text-dark);
+    border: 1px solid var(--menu-text-dark);
+}
+
+#mobile-menu {
+    background-color: var(--menu-bg);
+    color: var(--menu-text);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.icon-color {
+    color: var(--icon-color);
+    transition: color 0.4s ease;
+}
+
+@keyframes liquidSpill {
+    0% {
+        clip-path: circle(0% at 100% 0%);
+    }
+    100% {
+        clip-path: circle(150% at 100% 0%);
+    }
+}
+
+.liquid-animation {
+    animation: liquidSpill 0.8s ease forwards;
+}
+
+/* Line styles */
+#menu-icon {
+    position: relative;
+}
+
+.line1, .line2, .line3 {
+    width: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.line2 {
+    margin: 0.2rem 0;
+}
+
+/* Cross animation styles */
+#menu-icon.open .line1 {
+    transform: translateY(0.7rem) rotate(-45deg);
+}
+
+#menu-icon.open .line2 {
+    opacity: 0;
+}
+
+#menu-icon.open .line3 {
+    transform: translateY(-0.7rem) rotate(45deg);
+}
+
+.home-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h-400 {
+    height: 400px;
+}
+
+.w-600 {
+    width: 600px;
+}
+
+/* Add this in your style.css or within a <style> tag in your HTML file */
+
+.image-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.image-container img {
+    transition: transform 0.5s ease, transform-origin 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-container img:hover {
+    transform: scale(1.5);
+}
+
+footer {
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));    
+    padding-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .flex-1 {
+        flex: 1;
+    }
+}
